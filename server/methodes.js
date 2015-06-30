@@ -1,0 +1,9 @@
+Meteor.methods({
+
+    randomQuestion: function () {
+        
+
+
+    }
+
+});
