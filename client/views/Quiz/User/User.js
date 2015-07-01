@@ -1,11 +1,8 @@
 //Todo: replace this bullshit with real Accounts and Database
 
-
-Session.setDefault('user', {
-    name: 'GUEST' + Random.id(2),
-    isGuest: true,
-    points:0
-});
+Session.setDefault('userName', 'GUEST' + Random.id(4));
+Session.setDefault('userPoints', 0);
+Session.setDefault('isGuest', true);
 
 
 /**
@@ -13,22 +10,10 @@ Session.setDefault('user', {
  */
 Template.user.events({
     'click .setUsername': function () {
-        //Check if Username is unique
         var newUsername = $('#username').val();
-        var user = Session.get('user');
-
-        if (user.name === newUsername) {
-            sweetAlert('username is already taken');
-            newUsername.val('');
-        } else {
-            Session.set('user',
-                {
-                    name: newUsername,
-                    isGuest: false
-                });
-        }
+        Session.set('userName', newUsername);
+        Session.set('isGuest', false);
     }
-
 });
 
 /**
@@ -37,22 +22,18 @@ Template.user.events({
 Template.user.helpers({
 
     'isGuest': function () {
-        var user = Session.get('user');
-        if (user.isGuest) {
-            return true;
-        }
-        return false;
+
+        return Session.get('isGuest');
+
     },
     'userName': function () {
-        return Session.get('user').name;
+        return Session.get('userName');
     },
 
     'userPoints': function () {
-       //Todo:  point generator
-        return Session.get('user').points;
+        //Todo:  point generator
+        return Session.get('userPoints');
     }
-
-
 });
 
 
