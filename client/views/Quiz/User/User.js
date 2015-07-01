@@ -11,6 +11,11 @@ Session.setDefault('isGuest', true);
 Template.user.events({
     'click .setUsername': function () {
         var newUsername = $('#username').val();
+        if (newUsername.length === 0) {
+            sweetAlert('Enter a Username');
+            return;
+        }
+
         Session.set('userName', newUsername);
         Session.set('isGuest', false);
     }

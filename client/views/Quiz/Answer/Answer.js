@@ -3,8 +3,7 @@
  */
 Template.answer.events({
     'keydown .answer': function (e) {
-        if (e.keyCode != 13) {
-        } else {
+        if (e.keyCode === 13) {
             Meteor.call('submitQuestion',
                 {
                     keyCode: e.keyCode,
@@ -17,7 +16,7 @@ Template.answer.events({
 
                     console.log(res);
                 }
-            )
+            );
         }
     }
 });

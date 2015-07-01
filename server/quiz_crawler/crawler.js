@@ -1,11 +1,11 @@
 //Only for DEMO USAGE
-if (Questions.find().count() === 0) {
-    the_simpsons();
-}
-function the_simpsons() {
+
+the_simpsons = function () {
+
+//
     Questions.remove({});
-    for (var i = 0; i < 200; i++) {
-        /*
+    for (var i = 10; i < 200; i++) {
+        /*s
          { a: 'Sector 7B',
          b: 'Sector 7G',
          c: 'Area 7B',
@@ -19,15 +19,27 @@ function the_simpsons() {
          hint: 'He works in a sector.' }
          */
 
+
         var question = HTTP.get('http://www.thesimpsonstrivia.com/functions/nextQuestion?nextQuestionId=' + i);
         question = JSON.parse(question.content);
+
         if (question.question) {
+
             Questions.insert({
                 question: question.question,
                 type: 'multi',
-                options: [question.a, question.b, question.c, question.d],
+                options: {
+                    A: question.a,
+                    B: question.b,
+                    C: question.c,
+                    D: question.d
+                },
                 answer: question.answer
             });
         }
+
+        console.log(i);
     }
-}
+};
+
+//
