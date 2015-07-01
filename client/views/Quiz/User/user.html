@@ -1,0 +1,14 @@
+<template name="user">
+    {{#if isGuest}}
+        <div class="form-inline">
+            <label style="display:block" for="username">Set Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username">
+            <button class="btn btn-info setUsername">Set</button>
+        </div>
+
+    {{else}}
+        Hello, {{userName}} <br>
+        Points: {{userPoints}}
+
+    {{/if }}
+</template>
