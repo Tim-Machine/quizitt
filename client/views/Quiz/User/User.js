@@ -1,0 +1,4 @@
+Session.setDefault('username', 'Guest');
+
+
+
